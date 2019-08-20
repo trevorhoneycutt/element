@@ -154,6 +154,13 @@ export const capitalize = function(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
+export const removeWhiteSpace = function(str) {
+  if (!isString(str)) return str;
+  return str
+    .replace(/\s/g, '-')
+    .toLowerCase();
+};
+
 export const looseEqual = function(a, b) {
   const isObjectA = isObject(a);
   const isObjectB = isObject(b);

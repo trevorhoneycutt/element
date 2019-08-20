@@ -1,11 +1,15 @@
 <template>
   <div
     class="el-select"
+		role="combobox"
+		:aria-expanded="visible"
+		aria-haspopup="listbox"
     :class="[selectSize ? 'el-select--' + selectSize : '']"
     @click.stop="toggleMenu"
     v-clickoutside="handleClose">
     <div
       class="el-select__tags"
+			:id="id+'-tags'"
       v-if="multiple"
       ref="tags"
       :style="{ 'max-width': inputWidth - 32 + 'px', width: '100%' }">
@@ -25,7 +29,7 @@
           :size="collapseTagSize"
           type="info"
           disable-transitions>
-          <span class="el-select__tags-text">+ {{ selected.length - 1 }}</span>
+          <span class="el-select__tags-text">+ {{ selected.length - 1 }}<span class="el-select__tags-comma">,</span></span>
         </el-tag>
       </span>
       <transition-group @after-leave="resetInputHeight" v-if="!collapseTags">
@@ -34,16 +38,22 @@
           :key="getValueKey(item)"
           :closable="!selectDisabled"
           :size="collapseTagSize"
-          :hit="item.hitState"
+          :hit="item.hitState"		
           type="info"
           @close="deleteTag($event, item)"
           disable-transitions>
-          <span class="el-select__tags-text">{{ item.currentLabel }}</span>
+          <span class="el-select__tags-text">{{ item.currentLabel }}<span class="el-select__tags-comma">,</span></span>
         </el-tag>
       </transition-group>
+			<span v-if="selected.length" class="el-select__tags-selected-text">({{t('el.select.selected')}})</span>
 
       <input
         type="text"
+				:aria-labelledby="id+'-tags'"
+				:aria-controls="visible ? id+'-listbox' : false"
+				aria-role="textbox"
+				:aria-owns="visible ? id+'-listbox' : false"
+				:aria-activedescendant="hoverIndex > -1 ? id+'-'+options[hoverIndex].value : false"
         class="el-select__input"
         :class="[selectSize ? `is-${ selectSize }` : '']"
         :disabled="selectDisabled"
@@ -71,13 +81,18 @@
       ref="reference"
       v-model="selectedLabel"
       type="text"
+			spellcheck="false"
+			:aria-labelledby="id ? id+'-tags' : false"
+			:aria-controls="visible && id ? id+'-listbox' : false"
+			aria-role="textbox"
+			:aria-owns="visible && id ? id+'-listbox' : false"
+			:aria-activedescendant="activeDescendant"
       :placeholder="currentPlaceholder"
       :name="name"
       :id="id"
       :autocomplete="autoComplete || autocomplete"
       :size="selectSize"
       :disabled="selectDisabled"
-      :readonly="readonly"
       :validate-event="false"
       :class="{ 'is-focus': visible }"
       @focus="handleFocus"
@@ -85,7 +100,7 @@
       @keyup.native="debouncedOnInputChange"
       @keydown.native.down.stop.prevent="navigateOptions('next')"
       @keydown.native.up.stop.prevent="navigateOptions('prev')"
-      @keydown.native.enter.prevent="selectOption"
+      @keydown.native.enter.prevent="multiple ? selectOption() : visible = false"
       @keydown.native.esc.stop.prevent="visible = false"
       @keydown.native.tab="visible = false"
       @paste.native="debouncedOnInputChange"
@@ -111,12 +126,16 @@
           tag="ul"
           wrap-class="el-select-dropdown__wrap"
           view-class="el-select-dropdown__list"
+					
+					:id="id"
           ref="scrollbar"
           :class="{ 'is-empty': !allowCreate && query && filteredOptionsCount === 0 }"
           v-show="options.length > 0 && !loading">
           <el-option
             :value="query"
             created
+						selectId="bob"
+						class="asfasdfasdfasdf"
             v-if="showNewOption">
           </el-option>
           <slot></slot>
@@ -146,7 +165,7 @@
   import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
   import { t } from 'element-ui/src/locale';
   import scrollIntoView from 'element-ui/src/utils/scroll-into-view';
-  import { getValueByPath, valueEquals, isIE, isEdge } from 'element-ui/src/utils/util';
+  import { getValueByPath, valueEquals, isIE, isEdge, removeWhiteSpace } from 'element-ui/src/utils/util';
   import NavigationMixin from './navigation-mixin';
   import { isKorean } from 'element-ui/src/utils/shared';
 
@@ -234,6 +253,10 @@
         return ['small', 'mini'].indexOf(this.selectSize) > -1
           ? 'mini'
           : 'small';
+      },
+
+      activeDescendant() {
+        return this.hoverIndex > -1 && this.id ? this.id + '-' + removeWhiteSpace(this.options[this.hoverIndex].value) : false;
       }
     },
 
@@ -463,7 +486,9 @@
         this.$nextTick(() => {
           if (this.visible) this.broadcast('ElSelectDropdown', 'updatePopper');
         });
-        this.hoverIndex = -1;
+        if (this.$props.multiple) {
+          this.hoverIndex = -1;
+        }
         if (this.multiple && this.filterable) {
           this.$nextTick(() => {
             const length = this.$refs.input.value.length * 15 + 20;
@@ -691,7 +716,9 @@
         } else {
           this.$emit('input', option.value);
           this.emitChange(option.value);
-          this.visible = false;
+          if (byClick) {
+            this.visible = false;
+          }
         }
         this.isSilentBlur = byClick;
         this.setSoftFocus();

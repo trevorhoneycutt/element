@@ -62,7 +62,8 @@ export default {
       loading: 'Loading',
       noMatch: 'No matching data',
       noData: 'No data',
-      placeholder: 'Select'
+      placeholder: 'Select',
+      selected: 'Selected'
     },
     cascader: {
       noMatch: 'No matching data',

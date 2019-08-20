@@ -37,3 +37,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@mixin utils-offscreen {
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+}

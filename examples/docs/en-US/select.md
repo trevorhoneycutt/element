@@ -189,9 +189,10 @@ Multiple select uses tags to display selected options.
 :::demo Set `multiple` attribute for `el-select` to enable multiple mode. In this case, the value of `v-model` will be an array of selected options. By default the selected options will be displayed as Tags. You can collapse them to a text by using `collapse-tags` attribute.
 ```html
 <template>
-  <el-select v-model="value1" multiple placeholder="Select">
+  <el-select v-model="value1" multiple placeholder="Select" id="multiple-select">
     <el-option
       v-for="item in options"
+			select-id="multiple-select"
       :key="item.value"
       :label="item.label"
       :value="item.value">
@@ -218,20 +219,20 @@ Multiple select uses tags to display selected options.
     data() {
       return {
         options: [{
-          value: 'Option1',
-          label: 'Option1'
+          value: 'Option 1',
+          label: 'Option 1'
         }, {
-          value: 'Option2',
-          label: 'Option2'
+          value: 'Option 2',
+          label: 'Option 2'
         }, {
-          value: 'Option3',
-          label: 'Option3'
+          value: 'Option 3',
+          label: 'Option 3'
         }, {
-          value: 'Option4',
-          label: 'Option4'
+          value: 'Option 4',
+          label: 'Option 4'
         }, {
-          value: 'Option5',
-          label: 'Option5'
+          value: 'Option 5',
+          label: 'Option 5'
         }],
         value1: [],
         value2: []
@@ -484,6 +485,7 @@ Create and select new items that are not included in select options
 <template>
   <el-select
     v-model="value"
+		id="create-new"
     multiple
     filterable
     allow-create
@@ -491,6 +493,7 @@ Create and select new items that are not included in select options
     placeholder="Choose tags for your article">
     <el-option
       v-for="item in options"
+			select-id="create-new"
       :key="item.value"
       :label="item.label"
       :value="item.value">
@@ -576,6 +579,7 @@ If the binding value of Select is an object, make sure to assign `value-key` as 
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | label | name of the group | string | — | — |
 | disabled | whether to disable all options in this group | boolean | — | false |
+| select-id | the `id` of the corresponding select element | string | — | — 
 
 ### Option Attributes
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
