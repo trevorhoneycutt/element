@@ -62,7 +62,8 @@ export default {
       loading: 'Memuat',
       noMatch: 'Tidak ada data yg cocok',
       noData: 'Tidak ada data',
-      placeholder: 'Pilih'
+      placeholder: 'Pilih',
+      selected: 'Dipilih'
     },
     cascader: {
       noMatch: 'Tidak ada data yg cocok',

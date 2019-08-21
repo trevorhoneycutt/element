@@ -62,7 +62,8 @@ export default {
       loading: 'Caricamento',
       noMatch: 'Nessuna corrispondenza',
       noData: 'Nessun dato',
-      placeholder: 'Seleziona'
+      placeholder: 'Seleziona',
+      selected: 'Selezionato'
     },
     cascader: {
       noMatch: 'Nessuna corrispondenza',

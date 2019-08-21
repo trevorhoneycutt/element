@@ -62,7 +62,8 @@ export default {
       loading: 'Ładowanie',
       noMatch: 'Brak dopasowań',
       noData: 'Brak danych',
-      placeholder: 'Wybierz'
+      placeholder: 'Wybierz',
+      select: 'Wybrano'
     },
     cascader: {
       noMatch: 'Brak dopasowań',

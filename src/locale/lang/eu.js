@@ -62,7 +62,8 @@ export default {
       loading: 'Kargatzen',
       noMatch: 'Bat datorren daturik ez',
       noData: 'Daturik ez',
-      placeholder: 'Hautatu'
+      placeholder: 'Hautatu',
+      selected: 'Hautatuta'
     },
     cascader: {
       noMatch: 'Bat datorren daturik ez',

@@ -62,7 +62,8 @@ export default {
       loading: 'Laddar',
       noMatch: 'Hittade inget',
       noData: 'Ingen data',
-      placeholder: 'Välj'
+      placeholder: 'Välj',
+      selected: 'Valt'
     },
     cascader: {
       noMatch: 'Hittade inget',

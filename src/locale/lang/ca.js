@@ -62,7 +62,8 @@ export default {
       loading: 'Carregant',
       noMatch: 'No hi ha dades que coincideixin',
       noData: 'Sense Dades',
-      placeholder: 'Seleccionar'
+      placeholder: 'Seleccionar',
+      selected: 'Seleccionat'
     },
     cascader: {
       noMatch: 'No hi ha dades que coincideixin',

@@ -62,7 +62,8 @@ export default {
       loading: '불러오는 중',
       noMatch: '맞는 데이터가 없습니다',
       noData: '데이터 없음',
-      placeholder: '선택'
+      placeholder: '선택',
+      selected: '선택됨'
     },
     cascader: {
       noMatch: '맞는 데이터가 없습니다',

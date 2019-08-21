@@ -62,7 +62,8 @@ export default {
       loading: 'Se încarcă',
       noMatch: 'Nu există date potrivite',
       noData: 'Nu există date',
-      placeholder: 'Selectează'
+      placeholder: 'Selectează',
+      selected: 'Selectat'
     },
     cascader: {
       noMatch: 'Nu există date potrivite',

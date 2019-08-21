@@ -62,7 +62,8 @@ export default {
       loading: 'Laadimine',
       noMatch: 'Sobivad andmed puuduvad',
       noData: 'Andmed puuduvad',
-      placeholder: 'Vali'
+      placeholder: 'Vali',
+      selected: 'Valitud'
     },
     cascader: {
       noMatch: 'Sobivad andmed puuduvad',

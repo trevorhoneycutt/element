@@ -62,7 +62,8 @@ export default {
       loading: 'Lataa',
       noMatch: 'Ei vastaavia tietoja',
       noData: 'Ei tietoja',
-      placeholder: 'Valitse'
+      placeholder: 'Valitse',
+      selected: 'Valittu'
     },
     cascader: {
       noMatch: 'Ei vastaavia tietoja',

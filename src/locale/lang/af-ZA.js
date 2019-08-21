@@ -62,7 +62,8 @@ export default {
       loading: 'Laai',
       noMatch: 'Geen toepaslike data',
       noData: 'Geen data',
-      placeholder: 'Kies'
+      placeholder: 'Kies',
+      selected: 'Gekies'
     },
     cascader: {
       noMatch: 'Geen toepaslike data',

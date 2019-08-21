@@ -62,7 +62,8 @@ export default {
       loading: 'Kraunasi',
       noMatch: 'Duomenų nerasta',
       noData: 'Nėra duomenų',
-      placeholder: 'Pasirink'
+      placeholder: 'Pasirink',
+      selected: 'Pasirinkta'
     },
     cascader: {
       noMatch: 'Duomenų nerasta',

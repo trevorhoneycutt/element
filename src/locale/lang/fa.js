@@ -62,7 +62,8 @@ export default {
       loading: 'بارگیری',
       noMatch: 'هیچ داده‌ای پیدا نشد',
       noData: 'اطلاعاتی وجود ندارد',
-      placeholder: 'انتخاب کنید'
+      placeholder: 'انتخاب کنید',
+      selected: 'انتخاب شده'
     },
     cascader: {
       noMatch: 'هیچ داده‌ای پیدا نشد',

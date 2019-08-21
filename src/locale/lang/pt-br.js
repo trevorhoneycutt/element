@@ -62,7 +62,8 @@ export default {
       loading: 'Carregando',
       noMatch: 'Sem resultados',
       noData: 'Sem dados',
-      placeholder: 'Selecione'
+      placeholder: 'Selecione',
+      selected: 'Selecionado'
     },
     cascader: {
       noMatch: 'Sem resultados',

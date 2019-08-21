@@ -62,7 +62,8 @@ export default {
       loading: 'يۈكلىنىۋاتىدۇ',
       noMatch: 'ئۇچۇر تېپىلمىدى',
       noData: 'ئۇچۇر يوق',
-      placeholder: 'تاللاڭ'
+      placeholder: 'تاللاڭ',
+      selected: 'تاللاندى'
     },
     cascader: {
       noMatch: 'ئۇچۇر تېپىلمىدى',

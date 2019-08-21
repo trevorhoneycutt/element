@@ -62,7 +62,8 @@ export default {
       loading: 'Bardibe',
       noMatch: 'Li hembere ve agahî tune',
       noData: 'Agahî tune',
-      placeholder: 'Bibijêre'
+      placeholder: 'Bibijêre',
+      select: 'Hilbijartin'
     },
     cascader: {
       noMatch: 'Li hembere ve agahî tune',

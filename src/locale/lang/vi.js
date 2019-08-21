@@ -62,7 +62,8 @@ export default {
       loading: 'Đang tải',
       noMatch: 'Dữ liệu không phù hợp',
       noData: 'Không tìm thấy dữ liệu',
-      placeholder: 'Chọn'
+      placeholder: 'Chọn',
+      selected: 'Đã chọn'
     },
     cascader: {
       noMatch: 'Dữ liệu không phù hợp',

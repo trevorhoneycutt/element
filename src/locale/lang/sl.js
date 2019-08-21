@@ -62,7 +62,8 @@ export default {
       loading: 'Nalaganje',
       noMatch: 'Ni ustreznih podatkov',
       noData: 'Ni podatkov',
-      placeholder: 'Izberi'
+      placeholder: 'Izberi',
+      selected: 'Izbrano'
     },
     cascader: {
       noMatch: 'Ni ustreznih podatkov',

@@ -62,7 +62,8 @@ export default {
       loading: 'កំពុងផ្ទុក',
       noMatch: 'គ្មានទិន្ន័យដូច',
       noData: 'គ្មានទិន្ន័យ',
-      placeholder: 'ជ្រើសរើស'
+      placeholder: 'ជ្រើសរើស',
+      selected: 'បានជ្រើស'
     },
     cascader: {
       noMatch: 'គ្មានទិន្ន័យដូច',

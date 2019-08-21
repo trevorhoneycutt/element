@@ -62,7 +62,8 @@ export default {
       loading: 'Բեռնում',
       noMatch: 'Համապատասխան տուեալներ չկան',
       noData: 'Տվյալներ չկան',
-      placeholder: 'Ընտրել'
+      placeholder: 'Ընտրել',
+      selected: 'Ընտրված'
     },
     cascader: {
       noMatch: 'Համապատասխան տուեալներ չկան',

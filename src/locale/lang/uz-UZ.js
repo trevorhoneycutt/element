@@ -62,7 +62,8 @@ export default {
       loading: 'Yuklanmoqda',
       noMatch: 'Mos maʼlumot yoʻq',
       noData: 'Maʼlumot yoʻq',
-      placeholder: 'Tanladizngiz'
+      placeholder: 'Tanladizngiz',
+      selected: 'Tanlandi'
     },
     cascader: {
       noMatch: 'Mos maʼlumot topilmadi',

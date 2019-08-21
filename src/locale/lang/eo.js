@@ -62,7 +62,8 @@ export default {
       loading: 'Ŝarĝante',
       noMatch: 'Neniuj kongruaj datumoj',
       noData: 'Neniuj datumoj',
-      placeholder: 'Bonvolu elekti'
+      placeholder: 'Bonvolu elekti',
+      selected: 'Selektita'
     },
     cascader: {
       noMatch: 'Neniuj kongruaj datumoj',

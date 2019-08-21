@@ -62,7 +62,8 @@ export default {
       loading: '加載中',
       noMatch: '無匹配資料',
       noData: '無資料',
-      placeholder: '請選擇'
+      placeholder: '請選擇',
+      selected: '已選取'
     },
     cascader: {
       noMatch: '無匹配資料',

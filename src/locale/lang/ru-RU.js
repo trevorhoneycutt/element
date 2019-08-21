@@ -62,7 +62,8 @@ export default {
       loading: 'Загрузка',
       noMatch: 'Совпадений не найдено',
       noData: 'Нет данных',
-      placeholder: 'Выбрать'
+      placeholder: 'Выбрать',
+      selected: 'Выбрано'
     },
     cascader: {
       noMatch: 'Совпадений не найдено',

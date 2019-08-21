@@ -62,7 +62,8 @@ export default {
       loading: 'Учитавање',
       noMatch: 'Нема резултата',
       noData: 'Нема података',
-      placeholder: 'Изабери'
+      placeholder: 'Изабери',
+      selected: 'Изабрано'
     },
     cascader: {
       noMatch: 'Нема резултата',

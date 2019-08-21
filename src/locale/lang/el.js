@@ -62,7 +62,8 @@ export default {
       loading: 'Φόρτωση',
       noMatch: 'Δεν βρέθηκαν αποτελέσματα',
       noData: 'Χωρίς δεδομένα',
-      placeholder: 'Επιλογή'
+      placeholder: 'Επιλογή',
+      selected: 'Επιλεγμένο'
     },
     cascader: {
       noMatch: 'Δεν βρέθηκαν αποτελέσματα',

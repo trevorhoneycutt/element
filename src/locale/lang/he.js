@@ -62,7 +62,8 @@ export default {
       loading: 'טוען',
       noMatch: 'לא נמצאו נתונים',
       noData: 'ללא נתונים',
-      placeholder: 'בחר'
+      placeholder: 'בחר',
+      selected: 'נבחר'
     },
     cascader: {
       noMatch: 'ללא נתונים מתאימים',

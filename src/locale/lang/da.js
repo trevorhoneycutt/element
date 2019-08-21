@@ -62,7 +62,8 @@ export default {
       loading: 'Henter',
       noMatch: 'Ingen matchende data',
       noData: 'Ingen data',
-      placeholder: 'Vælg'
+      placeholder: 'Vælg',
+      selected: 'Valgt'
     },
     cascader: {
       noMatch: 'Ingen matchende data',

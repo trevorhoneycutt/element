@@ -64,7 +64,8 @@ export default {
       loading: 'Načítání',
       noMatch: 'Žádná shoda',
       noData: 'Žádná data',
-      placeholder: 'Vybrat'
+      placeholder: 'Vybrat',
+      selected: 'Vybráno'
     },
     cascader: {
       noMatch: 'Žádná shoda',

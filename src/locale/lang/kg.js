@@ -62,7 +62,8 @@ export default {
       loading: 'Жүктөлүүдө',
       noMatch: 'Дал келген маалыматтар',
       noData: 'маалымат жок',
-      placeholder: 'тандоо'
+      placeholder: 'тандоо',
+      selected: 'Тандалган'
     },
     cascader: {
       noMatch: 'Дал келген маалыматтар',

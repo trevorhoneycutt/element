@@ -62,7 +62,8 @@ export default {
       loading: 'Ачаалж байна',
       noMatch: 'Тохирох өгөгдөл байхгүй',
       noData: 'Өгөгдөл байхгүй',
-      placeholder: 'Сонгох'
+      placeholder: 'Сонгох',
+      selected: 'Сонгосон'
     },
     cascader: {
       noMatch: 'Тохирох өгөгдөл байхгүй',

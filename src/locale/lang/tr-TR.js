@@ -62,7 +62,8 @@ export default {
       loading: 'Yükleniyor',
       noMatch: 'Eşleşen veri bulunamadı',
       noData: 'Veri yok',
-      placeholder: 'Seç'
+      placeholder: 'Seç',
+      selected: 'Seçildi'
     },
     cascader: {
       noMatch: 'Eşleşen veri bulunamadı',

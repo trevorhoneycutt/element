@@ -62,7 +62,8 @@ export default {
       loading: 'Chargement',
       noMatch: 'Aucune correspondance',
       noData: 'Aucune donnée',
-      placeholder: 'Choisir'
+      placeholder: 'Choisir',
+      selected: 'Sélectionné'
     },
     cascader: {
       noMatch: 'Aucune correspondance',

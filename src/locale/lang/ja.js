@@ -62,7 +62,8 @@ export default {
       loading: 'ロード中',
       noMatch: 'データなし',
       noData: 'データなし',
-      placeholder: '選択してください'
+      placeholder: '選択してください',
+      selected: '選択済み'
     },
     cascader: {
       noMatch: 'データなし',

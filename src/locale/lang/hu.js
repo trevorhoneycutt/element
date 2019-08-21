@@ -61,7 +61,8 @@ export default {
       loading: 'Betöltés',
       noMatch: 'Nincs találat',
       noData: 'Nincs adat',
-      placeholder: 'Válassz'
+      placeholder: 'Válassz',
+      selected: 'Kijelölt'
     },
     cascader: {
       noMatch: 'Nincs találat',

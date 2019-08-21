@@ -62,7 +62,8 @@ export default {
       loading: 'Indirilýär',
       noMatch: 'Hiçzat tapylmady',
       noData: 'Hiçzat ýok',
-      placeholder: 'Saýla'
+      placeholder: 'Saýla',
+      selected: 'Saýlanan'
     },
     cascader: {
       noMatch: 'Hiçzat tapylmady',

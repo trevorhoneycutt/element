@@ -62,7 +62,8 @@ export default {
       loading: 'A carregar',
       noMatch: 'Sem correspondência',
       noData: 'Sem dados',
-      placeholder: 'Selecione'
+      placeholder: 'Selecione',
+      selected: 'Selecionado'
     },
     cascader: {
       noMatch: 'Sem correspondência',

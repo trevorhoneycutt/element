@@ -62,7 +62,8 @@ export default {
       loading: 'กำลังโหลด',
       noMatch: 'ไม่พบข้อมูลที่ตรงกัน',
       noData: 'ไม่พบข้อมูล',
-      placeholder: 'เลือก'
+      placeholder: 'เลือก',
+      selected: 'เลือกแล้ว'
     },
     cascader: {
       noMatch: 'ไม่พบข้อมูลที่ตรงกัน',

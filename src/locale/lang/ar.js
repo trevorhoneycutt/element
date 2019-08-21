@@ -62,7 +62,8 @@ export default {
       loading: 'جار التحميل',
       noMatch: 'لايوجد بيانات مطابقة',
       noData: 'لايوجد بيانات',
-      placeholder: 'إختر'
+      placeholder: 'إختر',
+      selected: 'محدد'
     },
     cascader: {
       noMatch: 'لايوجد بيانات مطابقة',

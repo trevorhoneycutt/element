@@ -62,7 +62,8 @@ export default {
       loading: 'Зареждане',
       noMatch: 'Няма намерени',
       noData: 'Няма данни',
-      placeholder: 'Избери'
+      placeholder: 'Избери',
+      selected: 'Избрани'
     },
     cascader: {
       noMatch: 'Няма намерени',

@@ -62,7 +62,8 @@ export default {
       loading: 'Laden',
       noMatch: 'Geen overeenkomende resultaten',
       noData: 'Geen data',
-      placeholder: 'Selecteer'
+      placeholder: 'Selecteer',
+      selected: 'Geselecteerd'
     },
     cascader: {
       noMatch: 'Geen overeenkomende resultaten',

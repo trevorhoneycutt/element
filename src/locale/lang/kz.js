@@ -62,7 +62,8 @@ export default {
       loading: 'Жүктелуде',
       noMatch: 'Сәйкес деректер жоқ',
       noData: 'Деректер жоқ',
-      placeholder: 'Таңдаңыз'
+      placeholder: 'Таңдаңыз',
+      selected: 'Таңдалған'
     },
     cascader: {
       noMatch: 'Сәйкес деректер жоқ',

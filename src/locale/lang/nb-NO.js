@@ -62,7 +62,8 @@ export default {
       loading: 'Laster',
       noMatch: 'Ingen samsvarende data',
       noData: 'Ingen data',
-      placeholder: 'Velg'
+      placeholder: 'Velg',
+      selected: 'Merket'
     },
     cascader: {
       noMatch: 'Ingen samsvarende data',

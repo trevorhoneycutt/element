@@ -61,7 +61,8 @@ export default {
       loading: 'தயாராகிக்கொண்டிருக்கிறது',
       noMatch: 'பொருத்தமான தரவு கிடைக்கவில்லை',
       noData: 'தரவு இல்லை',
-      placeholder: 'தேர்வு செய்'
+      placeholder: 'தேர்வு செய்',
+      selected: 'தேர்ந்தெடுத்த'
     },
     cascader: {
       noMatch: 'பொருத்தமான தரவு கிடைக்கவில்லை',
