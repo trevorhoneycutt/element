@@ -32,8 +32,8 @@
       color: $--select-option-selected-font-color;
       font-weight: bold;
     }
-	}
-	@include e(selected-text) {
-		@include utils-offscreen;
-	}
+  }
+  @include e(selected-text) {
+    @include utils-offscreen;
+  }
 }

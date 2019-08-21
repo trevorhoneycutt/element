@@ -117,16 +117,16 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-	}
-	
-	@include e(tags-selected-text) {
-		display: inline !important;
-		@include utils-offscreen;
-	}
+  }
+  
+  @include e(tags-selected-text) {
+    display: inline !important;
+    @include utils-offscreen;
+  }
 
-	@include e(tags-comma) {
-		@include utils-offscreen;
-	}
+  @include e(tags-comma) {
+    @include utils-offscreen;
+  }
 
   .el-tag__close {
     margin-top: -2px;

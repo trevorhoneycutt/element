@@ -38,7 +38,7 @@
           :key="getValueKey(item)"
           :closable="!selectDisabled"
           :size="collapseTagSize"
-          :hit="item.hitState"		
+          :hit="item.hitState"
           type="info"
           @close="deleteTag($event, item)"
           disable-transitions>
@@ -126,7 +126,6 @@
           tag="ul"
           wrap-class="el-select-dropdown__wrap"
           view-class="el-select-dropdown__list"
-
           :id="id"
           ref="scrollbar"
           :class="{ 'is-empty': !allowCreate && query && filteredOptionsCount === 0 }"
@@ -134,8 +133,6 @@
           <el-option
             :value="query"
             created
-            selectId="bob"
-            class="asfasdfasdfasdf"
             v-if="showNewOption">
           </el-option>
           <slot></slot>
