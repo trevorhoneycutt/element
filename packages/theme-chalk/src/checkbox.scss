@@ -286,9 +286,9 @@
 
   @include e(original) {
     outline: none;
-		margin: 0;
-		
-		@include utils-offscreen;
+    margin: 0;
+    
+    @include utils-offscreen;
   }
 
   &.is-checked {

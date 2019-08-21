@@ -39,7 +39,7 @@
 }
 
 @mixin utils-offscreen {
-	opacity: 0;
-	position: absolute;
-	z-index: -1;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
 }

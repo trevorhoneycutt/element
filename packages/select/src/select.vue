@@ -1,15 +1,15 @@
 <template>
   <div
     class="el-select"
-		role="combobox"
-		:aria-expanded="visible"
-		aria-haspopup="listbox"
+    role="combobox"
+    :aria-expanded="visible"
+    aria-haspopup="listbox"
     :class="[selectSize ? 'el-select--' + selectSize : '']"
     @click.stop="toggleMenu"
     v-clickoutside="handleClose">
     <div
       class="el-select__tags"
-			:id="id+'-tags'"
+      :id="id+'-tags'"
       v-if="multiple"
       ref="tags"
       :style="{ 'max-width': inputWidth - 32 + 'px', width: '100%' }">
@@ -45,15 +45,15 @@
           <span class="el-select__tags-text">{{ item.currentLabel }}<span class="el-select__tags-comma">,</span></span>
         </el-tag>
       </transition-group>
-			<span v-if="selected.length" class="el-select__tags-selected-text">({{t('el.select.selected')}})</span>
+      <span v-if="selected.length" class="el-select__tags-selected-text">({{t('el.select.selected')}})</span>
 
       <input
         type="text"
-				:aria-labelledby="id+'-tags'"
-				:aria-controls="visible ? id+'-listbox' : false"
-				aria-role="textbox"
-				:aria-owns="visible ? id+'-listbox' : false"
-				:aria-activedescendant="hoverIndex > -1 ? id+'-'+options[hoverIndex].value : false"
+        :aria-labelledby="id+'-tags'"
+        :aria-controls="visible ? id+'-listbox' : false"
+        aria-role="textbox"
+        :aria-owns="visible ? id+'-listbox' : false"
+        :aria-activedescendant="hoverIndex > -1 ? id+'-'+options[hoverIndex].value : false"
         class="el-select__input"
         :class="[selectSize ? `is-${ selectSize }` : '']"
         :disabled="selectDisabled"
@@ -81,12 +81,12 @@
       ref="reference"
       v-model="selectedLabel"
       type="text"
-			spellcheck="false"
-			:aria-labelledby="id ? id+'-tags' : false"
-			:aria-controls="visible && id ? id+'-listbox' : false"
-			aria-role="textbox"
-			:aria-owns="visible && id ? id+'-listbox' : false"
-			:aria-activedescendant="activeDescendant"
+      spellcheck="false"
+      :aria-labelledby="id ? id+'-tags' : false"
+      :aria-controls="visible && id ? id+'-listbox' : false"
+      aria-role="textbox"
+      :aria-owns="visible && id ? id+'-listbox' : false"
+      :aria-activedescendant="activeDescendant"
       :placeholder="currentPlaceholder"
       :name="name"
       :id="id"
@@ -126,16 +126,16 @@
           tag="ul"
           wrap-class="el-select-dropdown__wrap"
           view-class="el-select-dropdown__list"
-					
-					:id="id"
+
+          :id="id"
           ref="scrollbar"
           :class="{ 'is-empty': !allowCreate && query && filteredOptionsCount === 0 }"
           v-show="options.length > 0 && !loading">
           <el-option
             :value="query"
             created
-						selectId="bob"
-						class="asfasdfasdfasdf"
+            selectId="bob"
+            class="asfasdfasdfasdf"
             v-if="showNewOption">
           </el-option>
           <slot></slot>

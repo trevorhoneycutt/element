@@ -192,7 +192,7 @@ Multiple select uses tags to display selected options.
   <el-select v-model="value1" multiple placeholder="Select" id="multiple-select">
     <el-option
       v-for="item in options"
-			select-id="multiple-select"
+      select-id="multiple-select"
       :key="item.value"
       :label="item.label"
       :value="item.value">
@@ -485,7 +485,7 @@ Create and select new items that are not included in select options
 <template>
   <el-select
     v-model="value"
-		id="create-new"
+    id="create-new"
     multiple
     filterable
     allow-create
@@ -493,7 +493,7 @@ Create and select new items that are not included in select options
     placeholder="Choose tags for your article">
     <el-option
       v-for="item in options"
-			select-id="create-new"
+      select-id="create-new"
       :key="item.value"
       :label="item.label"
       :value="item.value">
@@ -579,7 +579,7 @@ If the binding value of Select is an object, make sure to assign `value-key` as 
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | label | name of the group | string | — | — |
 | disabled | whether to disable all options in this group | boolean | — | false |
-| select-id | the `id` of the corresponding select element | string | — | — 
+| select-id | the `id` of the corresponding select element | string | — | — |
 
 ### Option Attributes
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
