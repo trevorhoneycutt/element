@@ -71,7 +71,7 @@
       },
   
       itemId() {
-        return this.selectId ? this.selectId + '-' + removeWhiteSpace(this.currentLabel) : false;
+        return this.selectId ? this.selectId + '-' + removeWhiteSpace(this.currentValue) : false;
       },
 
       currentValue() {

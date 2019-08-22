@@ -3,7 +3,7 @@ import Select from 'packages/select';
 
 describe('Select', () => {
   const getSelectVm = (configs = {}, options) => {
-    ['multiple', 'clearable', 'filterable', 'allowCreate', 'remote', 'collapseTags', 'automaticDropdown'].forEach(config => {
+    ['multiple', 'id', 'clearable', 'filterable', 'allowCreate', 'remote', 'collapseTags', 'automaticDropdown'].forEach(config => {
       configs[config] = configs[config] || false;
     });
     configs.multipleLimit = configs.multipleLimit || 0;
@@ -33,9 +33,10 @@ describe('Select', () => {
     const vm = createVue({
       template: `
         <div>
-          <el-select
+					<el-select
+						:id="id"
             ref="select"
-            v-model="value"
+						v-model="value"
             :multiple="multiple"
             :multiple-limit="multipleLimit"
             :popper-class="popperClass"
@@ -48,8 +49,9 @@ describe('Select', () => {
             :loading="loading"
             :remoteMethod="remoteMethod"
             :automatic-dropdown="automaticDropdown">
-            <el-option
-              v-for="item in options"
+						<el-option
+							v-for="item in options"
+							:select-id="id"
               :label="item.label"
               :key="item.value"
               :disabled="item.disabled"
@@ -62,6 +64,7 @@ describe('Select', () => {
       data() {
         return {
           options,
+          id: configs.id ? configs.id : '',
           multiple: configs.multiple,
           multipleLimit: configs.multipleLimit,
           clearable: configs.clearable,
@@ -98,7 +101,7 @@ describe('Select', () => {
     vm = getSelectVm();
     const options = vm.$el.querySelectorAll('.el-select-dropdown__item');
     const result = [].every.call(options, (option, index) => {
-      let text = option.querySelector('span').textContent;
+      let text = option.querySelector('span').textContent.trim();
       return text === vm.options[index].label;
     });
     expect(result).to.true;
@@ -443,7 +446,7 @@ describe('Select', () => {
     const options = groups[1].querySelectorAll('.el-select-dropdown__item');
     expect(groups.length).to.equal(2);
     expect(options.length).to.equal(4);
-    expect(options[0].querySelector('span').textContent).to.equal('成都');
+    expect(options[0].querySelector('span').textContent.trim()).to.equal('成都');
   });
 
   it('filterable', done => {
@@ -556,6 +559,22 @@ describe('Select', () => {
         }, 100);
       }, 100);
     }, 100);
+  });
+
+  it('multiple aria-activedescendant', done => {
+    vm = getSelectVm({ multiple: true, id: 'my-id' });
+    const select = vm.$children[0];
+    const textbox = vm.$el.querySelector('input[type=text]');
+    const options = vm.$el.querySelectorAll('.el-select-dropdown__item');
+    let i = 3;
+    while (i--) {
+      select.navigateOptions('next');
+    }
+    setTimeout(() => {
+      console.log(vm.innerHTML);
+      expect(textbox.getAttribute('aria-activedescendant')).to.equal(options[1].getAttribute('id'));
+      done();
+    });
   });
 
   it('multiple remove-tag', done => {

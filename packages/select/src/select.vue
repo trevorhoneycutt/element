@@ -9,7 +9,7 @@
     v-clickoutside="handleClose">
     <div
       class="el-select__tags"
-      :id="id+'-tags'"
+      :id="id ? id+'-tags' : false"
       v-if="multiple"
       ref="tags"
       :style="{ 'max-width': inputWidth - 32 + 'px', width: '100%' }">
