@@ -1,5 +1,14 @@
 ## Changelog
 
+### 2.11.1-3
+
+*2019-09-18*
+
+#### Bug fixes
+
+- Time Picker
+  - Don't pad hour with zero if a 1-digit hour format is used
+
 ### 2.11.1-2
 
 *2019-09-13*
