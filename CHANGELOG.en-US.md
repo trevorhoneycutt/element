@@ -2,7 +2,12 @@
 
 ### 2.11.1-3
 
-*2019-09-18*
+*2019-09-19*
+
+#### New features
+
+- Time Picker
+  - Add support for 'format' option in time-select
 
 #### Bug fixes
 
