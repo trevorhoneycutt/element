@@ -325,7 +325,7 @@
         const minRows = autosize.minRows;
         const maxRows = autosize.maxRows;
 
-        this.textareaCalcStyle = calcTextareaHeight(this.$refs.textarea, minRows, maxRows);
+        this.textareaCalcStyle = {height: calcTextareaHeight(this.$refs.textarea, minRows, maxRows).height};
       },
       setNativeInputValue() {
         const input = this.getInput();
