@@ -289,6 +289,10 @@
       disabled: Boolean,
       clearable: Boolean,
       filterable: Boolean,
+      filterMode: {
+        type: String,
+        default: 'contains'
+      },
       editable: Boolean,
       allowCreate: Boolean,
       loading: Boolean,
