@@ -14,7 +14,7 @@
     <tr
       class="el-date-table__row"
       v-for="(row, key) in rows"
-      :class="{ current: isWeekActive(row[1]) }"
+      :class="{ ['is-selected']: isWeekActive(row[1]) }"
       :key="key">
       <td
         v-for="(cell, key) in row"
