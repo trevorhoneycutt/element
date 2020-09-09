@@ -289,9 +289,9 @@
       disabled: Boolean,
       clearable: Boolean,
       filterable: Boolean,
-      filterMode: {
+      filterMatch: {
         type: String,
-        default: 'contains'
+        default: 'anywhere'
       },
       editable: Boolean,
       allowCreate: Boolean,

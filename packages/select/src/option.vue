@@ -139,7 +139,7 @@
 
       queryChange(query) {
         let queryExpr = escapeRegexpString(query);
-        if (this.select && this.select.filterMode === 'startsWith') {
+        if (this.select && this.select.filterMatch === 'beginning') {
           queryExpr = '^' + queryExpr;
         }
         this.visible = new RegExp(queryExpr, 'i').test(this.currentLabel) || this.created;
