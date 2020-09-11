@@ -1,6 +1,8 @@
 <template>
   <transition name="el-zoom-in-top" @after-enter="handleEnter" @after-leave="handleLeave">
+    <!-- Prevent mousedown from stealing focus from date input -->
     <div
+      @mousedown.prevent="noop"
       v-show="visible"
       class="el-picker-panel el-date-picker el-popper"
       :class="[{
@@ -46,6 +48,7 @@
             </span>
           </div>
           <div
+            tabindex="-1"
             class="el-date-picker__header"
             :class="{ 'el-date-picker__header--bordered': currentView === 'year' || currentView === 'month' }"
             v-show="currentView !== 'time'">
@@ -229,6 +232,7 @@
     },
 
     methods: {
+      noop() {},
       proxyTimePickerDataProperties() {
         const format = timeFormat => {this.$refs.timepicker.format = timeFormat;};
         const value = value => {this.$refs.timepicker.value = value;};
