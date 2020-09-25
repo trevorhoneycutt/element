@@ -547,7 +547,6 @@
         if (this.visible) {
           e.preventDefault();
         }
-        this.selectOption(e);
         this.visible = false;
       },
 
