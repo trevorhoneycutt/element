@@ -517,6 +517,7 @@
         if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount) {
           this.checkDefaultFirstOption();
         }
+        this.$emit('queryChange', this.filteredOptionsCount);
       },
 
       handleUpArrowKey(e) {
@@ -547,7 +548,28 @@
         if (this.visible) {
           e.preventDefault();
         }
+        if (this.allowCreate) {
+          this.handleOptionSelect(this.getMatchingOption());
+        } else if (this.filteredOptionsCount === 1) {
+          this.handleOptionSelect(this.getFirstVisibleOption());
+        }
         this.visible = false;
+      },
+
+      getFirstVisibleOption() {
+        for (let i = 0; i < this.options.length; i++) {
+          if (this.options[i].visible) {
+            return this.options[i];
+          }
+        }
+      },
+
+      getMatchingOption() {
+        for (let i = 0; i < this.options.length; i++) {
+          if (this.options[i].currentValue === this.query) {
+            return this.options[i];
+          }
+        }
       },
 
       handleSpaceKey(e) {
