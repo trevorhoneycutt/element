@@ -517,7 +517,6 @@
         if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount) {
           this.checkDefaultFirstOption();
         }
-        this.$emit('queryChange', this.filteredOptionsCount);
       },
 
       handleUpArrowKey(e) {
@@ -544,13 +543,10 @@
         this.visible = false;
       },
 
-      handleTabKey(e) {
-        if (this.visible) {
-          e.preventDefault();
-        }
+      handleTabKey(e) { 
         if (this.allowCreate) {
           this.handleOptionSelect(this.getMatchingOption());
-        } else if (this.filteredOptionsCount === 1) {
+        } else if (this.query.length > 0 && this.query !== this.selected.currentValue) {
           this.handleOptionSelect(this.getFirstVisibleOption());
         }
         this.visible = false;
