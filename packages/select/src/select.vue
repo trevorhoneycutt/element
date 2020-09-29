@@ -119,7 +119,7 @@
       @after-leave="doDestroy">
       <el-select-menu
         ref="popper"
-        @placement="handlePlacement"
+        @placement-change="handlePlacementChange"
         :append-to-body="popperAppendToBody"
         v-show="visible && emptyText !== false">
         <el-scrollbar
@@ -910,7 +910,7 @@
         }
       },
 
-      handlePlacement(placement) {
+      handlePlacementChange(placement) {
         this.popperPlacement = placement;
       }
     },
