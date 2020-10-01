@@ -543,7 +543,7 @@
         this.visible = false;
       },
 
-      handleTabKey(e) { 
+      handleTabKey(e) {
         if (this.allowCreate) {
           this.handleOptionSelect(this.getMatchingOption());
         } else if (this.query.length > 0 && this.query !== this.selected.currentValue) {
