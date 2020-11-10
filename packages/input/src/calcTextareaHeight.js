@@ -70,7 +70,7 @@ export default function calcTextareaHeight(
   hiddenTextarea.setAttribute('style', `${contextStyle};${HIDDEN_STYLE}`);
   hiddenTextarea.value = targetElement.value || targetElement.placeholder || '';
 
-  let height = hiddenTextarea.scrollHeight;
+  let height = hiddenTextarea.scrollHeight + 2;
   const result = {};
 
   if (boxSizing === 'border-box') {
