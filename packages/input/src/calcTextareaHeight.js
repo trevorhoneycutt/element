@@ -43,11 +43,13 @@ function calculateNodeStyling(targetElement) {
     parseFloat(style.getPropertyValue('border-top-width'))
   );
 
+  const lineheight = parseFloat(style.getPropertyValue('line-height'));
+
   const contextStyle = CONTEXT_STYLE
     .map(name => `${name}:${style.getPropertyValue(name)}`)
     .join(';');
 
-  return { contextStyle, paddingSize, borderSize, boxSizing };
+  return { contextStyle, paddingSize, borderSize, boxSizing, lineheight };
 }
 
 export default function calcTextareaHeight(
@@ -64,13 +66,14 @@ export default function calcTextareaHeight(
     paddingSize,
     borderSize,
     boxSizing,
-    contextStyle
+    contextStyle,
+    lineheight
   } = calculateNodeStyling(targetElement);
 
   hiddenTextarea.setAttribute('style', `${contextStyle};${HIDDEN_STYLE}`);
   hiddenTextarea.value = targetElement.value || targetElement.placeholder || '';
 
-  let height = hiddenTextarea.scrollHeight + 2;
+  let height = hiddenTextarea.scrollHeight;
   const result = {};
 
   if (boxSizing === 'border-box') {
@@ -97,6 +100,11 @@ export default function calcTextareaHeight(
     }
     height = Math.min(maxHeight, height);
   }
+
+  if (boxSizing === 'border-box') {
+    height = Math.round((height - paddingSize) / lineheight) * lineheight + paddingSize + borderSize;
+  }
+
   result.height = `${ height }px`;
   hiddenTextarea.parentNode && hiddenTextarea.parentNode.removeChild(hiddenTextarea);
   hiddenTextarea = null;
