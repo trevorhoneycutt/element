@@ -43,13 +43,11 @@ function calculateNodeStyling(targetElement) {
     parseFloat(style.getPropertyValue('border-top-width'))
   );
 
-  const lineheight = parseFloat(style.getPropertyValue('line-height'));
-
   const contextStyle = CONTEXT_STYLE
     .map(name => `${name}:${style.getPropertyValue(name)}`)
     .join(';');
 
-  return { contextStyle, paddingSize, borderSize, boxSizing, lineheight };
+  return { contextStyle, paddingSize, borderSize, boxSizing };
 }
 
 export default function calcTextareaHeight(
@@ -66,14 +64,15 @@ export default function calcTextareaHeight(
     paddingSize,
     borderSize,
     boxSizing,
-    contextStyle,
-    lineheight
+    contextStyle
   } = calculateNodeStyling(targetElement);
 
   hiddenTextarea.setAttribute('style', `${contextStyle};${HIDDEN_STYLE}`);
   hiddenTextarea.value = targetElement.value || targetElement.placeholder || '';
 
-  let height = hiddenTextarea.scrollHeight;
+  // Fixes scrollbar apearing when resizing
+  // scroll height returns an int, this lack of precision might be the cause, while testing it looked to be correlated to the pixel ratio
+  let height = hiddenTextarea.scrollHeight + (window.devicePixelRatio < 1 ? 1 : window.devicePixelRatio - 1);
   const result = {};
 
   if (boxSizing === 'border-box') {
@@ -99,10 +98,6 @@ export default function calcTextareaHeight(
       maxHeight = maxHeight + paddingSize + borderSize;
     }
     height = Math.min(maxHeight, height);
-  }
-
-  if (boxSizing === 'border-box') {
-    height = Math.round((height - paddingSize) / lineheight) * lineheight + paddingSize + borderSize;
   }
 
   result.height = `${ height }px`;
