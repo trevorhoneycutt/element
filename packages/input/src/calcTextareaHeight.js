@@ -70,7 +70,7 @@ export default function calcTextareaHeight(
   hiddenTextarea.setAttribute('style', `${contextStyle};${HIDDEN_STYLE}`);
   hiddenTextarea.value = targetElement.value || targetElement.placeholder || '';
 
-  // Fixes scrollbar apearing when resizing
+  // Fixes scrollbar appearing when resizing
   // scroll height returns an int, this lack of precision might be the cause, while testing it looked to be correlated to the pixel ratio
   let height = hiddenTextarea.scrollHeight + (window.devicePixelRatio < 1 ? 1 : window.devicePixelRatio - 1);
   const result = {};
