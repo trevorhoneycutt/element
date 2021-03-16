@@ -1,11 +1,8 @@
 <template>
+
   <div
     class="el-switch"
     :class="{ 'is-disabled': switchDisabled, 'is-checked': checked }"
-    role="switch"
-    :aria-checked="checked"
-    :aria-disabled="switchDisabled"
-    @click.prevent="switchValue"
   >
     <input
       class="el-switch__input"
@@ -14,6 +11,7 @@
       ref="input"
       :id="id"
       :name="name"
+      aria-live="polite"
       :true-value="activeValue"
       :false-value="inactiveValue"
       :disabled="switchDisabled"
