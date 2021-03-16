@@ -1,5 +1,4 @@
 <template>
-
   <div
     class="el-switch"
     :class="{ 'is-disabled': switchDisabled, 'is-checked': checked }"
