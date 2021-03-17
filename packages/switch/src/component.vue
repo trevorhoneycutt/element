@@ -6,15 +6,13 @@
     <input
       class="el-switch__input"
       type="checkbox"
-      @change="handleChange"
       ref="input"
+      :aria-label="ariaLabel"
       :id="id"
       :name="name"
-      aria-live="polite"
-      :true-value="activeValue"
-      :false-value="inactiveValue"
       :disabled="switchDisabled"
-      @keydown.enter="switchValue"
+      @keydown.enter="switchValue()"
+      @change="switchValue()"
     >
     <span
       :class="['el-switch__label', 'el-switch__label--left', !checked ? 'is-active' : '']"
@@ -22,7 +20,7 @@
       <i :class="[inactiveIconClass]" v-if="inactiveIconClass"></i>
       <span v-if="!inactiveIconClass && inactiveText" :aria-hidden="checked">{{ inactiveText }}</span>
     </span>
-    <span class="el-switch__core" ref="core" :style="{ 'width': coreWidth + 'px' }">
+    <span class="el-switch__core" ref="core" :style="{ 'width': coreWidth + 'px' }" @click="switchValue()">
     </span>
     <span
       :class="['el-switch__label', 'el-switch__label--right', checked ? 'is-active' : '']"
@@ -105,6 +103,9 @@
       }
     },
     computed: {
+      ariaLabel() {
+        return this.name + ' ' + this.activeText;
+      },
       checked() {
         return this.value === this.activeValue;
       },
