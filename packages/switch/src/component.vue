@@ -11,7 +11,7 @@
       :id="id"
       :name="name"
       :disabled="switchDisabled"
-      @keydown.enter="switchValue()"
+      @keyup.enter="switchValue()"
       @change="switchValue()"
     >
     <span
@@ -104,7 +104,7 @@
     },
     computed: {
       ariaLabel() {
-        return this.name + ' ' + this.activeText;
+        return this.name + (this.name ? '.' : '') + ' ' + this.activeText;
       },
       checked() {
         return this.value === this.activeValue;
