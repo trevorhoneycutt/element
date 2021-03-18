@@ -16,7 +16,7 @@
     >
     <span
       :class="['el-switch__label', 'el-switch__label--left', !checked ? 'is-active' : '']"
-      v-if="inactiveIconClass || inactiveText" @click="switchValue()">
+      v-if="inactiveIconClass || inactiveText" @click="switchValue(false)">
       <i :class="[inactiveIconClass]" v-if="inactiveIconClass"></i>
       <span v-if="!inactiveIconClass && inactiveText" :aria-hidden="checked">{{ inactiveText }}</span>
     </span>
@@ -24,7 +24,7 @@
     </span>
     <span
       :class="['el-switch__label', 'el-switch__label--right', checked ? 'is-active' : '']"
-      v-if="activeIconClass || activeText" @click="switchValue()">
+      v-if="activeIconClass || activeText" @click="switchValue(true)">
       <i :class="[activeIconClass]" v-if="activeIconClass"></i>
       <span v-if="!activeIconClass && activeText" :aria-hidden="!checked">{{ activeText }}</span>
     </span>
@@ -125,8 +125,8 @@
       }
     },
     methods: {
-      handleChange(event) {
-        const val = this.checked ? this.inactiveValue : this.activeValue;
+      handleChange(event, value) {
+        const val = value !== undefined && value !== null ? value : (this.checked ? this.inactiveValue : this.activeValue);
         this.$emit('input', val);
         this.$emit('change', val);
         this.$nextTick(() => {
@@ -145,8 +145,8 @@
         this.$refs.core.style.borderColor = newColor;
         this.$refs.core.style.backgroundColor = newColor;
       },
-      switchValue() {
-        !this.switchDisabled && this.handleChange();
+      switchValue(val) {
+        !this.switchDisabled && this.handleChange(null, val);
       },
       getMigratingConfig() {
         return {
