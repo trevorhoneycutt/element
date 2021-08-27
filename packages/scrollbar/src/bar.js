@@ -25,7 +25,7 @@ export default {
     const { size, move, bar } = this;
 
     if (!size) {
-      return false;
+      return null;
     }
 
     return (
