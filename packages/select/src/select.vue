@@ -907,7 +907,7 @@
         if (hasCreated) return;
         for (let i = 0; i !== this.options.length; ++i) {
           const option = this.options[i];
-          if (this.query) {
+          if (this.query || this.alternativeFilter) {
             // highlight first options that passes the filter
             if (!option.disabled && !option.groupDisabled && option.visible) {
               this.hoverIndex = i;
