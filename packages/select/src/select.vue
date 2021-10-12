@@ -485,6 +485,7 @@
         }
       },
       handleQueryChange(val) {
+        this.query = val;
         if (this.previousQuery === val || this.isOnComposition) return;
         if (
           this.previousQuery === null &&
@@ -908,7 +909,7 @@
         if (hasCreated) return;
         for (let i = 0; i !== this.options.length; ++i) {
           const option = this.options[i];
-          if (this.query || this.alternativeFilter) {
+          if (this.query) {
             // highlight first options that passes the filter
             if (!option.disabled && !option.groupDisabled && option.visible) {
               this.hoverIndex = i;
