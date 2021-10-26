@@ -957,10 +957,10 @@
         this.handleQueryChange(e.target.value);
       });
 
+      this.$on('handleOptionClick', this.handleOptionSelect);
       if (!this.multiple) {
         this.$on('handleOptionClick', this.handleClose);
       }
-      this.$on('handleOptionClick', this.handleOptionSelect);
       this.$on('setSelected', this.setSelected);
     },
 
