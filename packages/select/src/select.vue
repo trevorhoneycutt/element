@@ -487,6 +487,8 @@
             this.selectedLabel = '';
           } else {
             this.$on('handleOptionClick', this.handleClose);
+            let option = this.getOption(this.value);
+            this.selectedLabel = option ? option.currentLabel : '';
           }
         }
       }
