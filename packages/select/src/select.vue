@@ -70,7 +70,7 @@
           v-model="query"
           @input="debouncedQueryChange"
           v-if="filterable"
-          :style="{ 'flex-grow': '1', width: selected.length > 0 ? (query.length > 0 ? query.length + 2 + 'ch':'2ch' ) : '100%', 'max-width': '100%' }"
+          :style="{ 'flex-grow': '1', width: multiSelectInputWidth, 'max-width': '100%' }"
           ref="input">
       </transition-group>
       <input
@@ -287,6 +287,14 @@
 
       hoveredOption() {
         return this.options[this.hoverIndex];
+      },
+
+      multiSelectInputWidth() {
+        if (this.selected.length > 0) {
+          return this.query.length + 2 + 'ch';
+        } else {
+          return '100%';
+        }
       }
     },
 
