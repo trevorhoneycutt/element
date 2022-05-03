@@ -21,6 +21,9 @@ SubMenu.prototype.gotoSubIndex = function(idx) {
   }
   this.subMenuItems[idx].focus();
   this.subIndex = idx;
+  if (this.subMenuItems[idx].classList.contains('el-submenu')) {
+    this.subMenuItems[idx].querySelector('.el-submenu__title').focus();
+  }
 };
 
 SubMenu.prototype.addListeners = function() {

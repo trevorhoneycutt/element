@@ -144,6 +144,7 @@
             parent = parent.$parent;
           }
         }
+        console.log(isFirstLevel);
         return isFirstLevel;
       }
     },
@@ -329,6 +330,7 @@
           on-mouseenter={this.handleMouseenter}
           on-mouseleave={() => this.handleMouseleave(false)}
           on-focus={this.handleMouseenter}
+          on-focusout={this.handleTitleMouseleave}
         >
           <div
             class="el-submenu__title"
@@ -336,7 +338,9 @@
             on-click={this.handleClick}
             on-mouseenter={this.handleTitleMouseenter}
             on-mouseleave={this.handleTitleMouseleave}
+            on-focus={() => this.rootMenu.openMenu(this.index)}
             style={[paddingStyle, titleStyle, { backgroundColor }]}
+            tabindex="-1"
           >
             {$slots.title}
             <i class={[ 'el-submenu__icon-arrow', submenuTitleIcon ]}></i>
@@ -347,3 +351,9 @@
     }
   };
 </script>
+
+<style lang="scss">
+.el-menu--horizontal *:focus {
+  color: blue!important;
+}
+</style>
