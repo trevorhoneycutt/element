@@ -26,7 +26,6 @@ SubMenu.prototype.gotoSubIndex = function(idx) {
   } else if (idx < 0) {
     idx = this.subMenuItems.length - 1;
   }
-
   this.subMenuItems[idx].focus();
   this.subIndex = idx;
   if (this.subMenuItems[idx].classList.contains('el-submenu')) {

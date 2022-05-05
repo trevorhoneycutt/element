@@ -360,9 +360,3 @@
     }
   };
 </script>
-
-<style lang="scss">
-.el-menu--horizontal *:focus {
-  color: blue!important;
-}
-</style>
