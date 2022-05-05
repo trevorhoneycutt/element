@@ -338,8 +338,7 @@
           aria-expanded={opened}
           on-mouseenter={this.handleMouseenter}
           on-mouseleave={() => this.handleMouseleave(false)}
-          on-focus={($event) => this.handleMouseenter($event, 100)}
-          on-focusout={() => this.handleMouseleave(true)}
+          on-focus={this.handleMouseenter}
           on-keyup={this.submenuKeyUp}
         >
           <div
@@ -360,3 +359,9 @@
     }
   };
 </script>
+
+<style lang="scss">
+.el-menu--horizontal *:focus {
+  color: blue!important;
+}
+</style>
