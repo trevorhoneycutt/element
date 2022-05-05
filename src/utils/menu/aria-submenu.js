@@ -14,11 +14,17 @@ SubMenu.prototype.init = function() {
 };
 
 SubMenu.prototype.gotoSubIndex = function(idx) {
+  // Calculate if going up or down in menu
+  var isDown = this.subIndex < idx;
   // Grab focusable menu items that are not hidden
   let test = this.domNode.querySelectorAll('[class^="el-menu--"]:not([style*="display: none"]) > .el-menu > li');
   // If current idx is not focusable, skip it
-  while (!Array.from(test).includes(this.subMenuItems[idx]) && idx < this.subMenuItems.length) {
-    idx++;
+  while (!Array.from(test).includes(this.subMenuItems[idx]) && ((isDown && idx < this.subMenuItems.length) || (!isDown && idx >= 0))) {
+    if (isDown) {
+      idx++;
+    } else {
+      idx--;
+    }
   }
 
   if (idx === this.subMenuItems.length) {
