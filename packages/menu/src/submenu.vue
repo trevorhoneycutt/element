@@ -144,7 +144,6 @@
             parent = parent.$parent;
           }
         }
-        console.log(isFirstLevel);
         return isFirstLevel;
       }
     },
@@ -231,6 +230,16 @@
         if (this.mode === 'horizontal' && !this.rootMenu.backgroundColor) return;
         const title = this.$refs['submenu-title'];
         title && (title.style.backgroundColor = this.rootMenu.backgroundColor || '');
+      },
+      submenuKeyUp(event) {
+        // If enter on submenu title, open submenu
+        if (event.keyCode === 13) {
+          if (!this.opened) {
+            this.rootMenu.openMenu(this.index, this.indexPath);
+          } else {
+            this.rootMenu.closeMenu(this.index);
+          }
+        }
       },
       updatePlacement() {
         this.currentPlacement = this.mode === 'horizontal' && this.isFirstLevel
@@ -329,8 +338,9 @@
           aria-expanded={opened}
           on-mouseenter={this.handleMouseenter}
           on-mouseleave={() => this.handleMouseleave(false)}
-          on-focus={this.handleMouseenter}
-          on-focusout={this.handleTitleMouseleave}
+          on-focus={($event) => this.handleMouseenter($event, 100)}
+          on-focusout={() => this.handleMouseleave(true)}
+          on-keyup={this.submenuKeyUp}
         >
           <div
             class="el-submenu__title"
@@ -338,7 +348,6 @@
             on-click={this.handleClick}
             on-mouseenter={this.handleTitleMouseenter}
             on-mouseleave={this.handleTitleMouseleave}
-            on-focus={() => this.rootMenu.openMenu(this.index)}
             style={[paddingStyle, titleStyle, { backgroundColor }]}
             tabindex="-1"
           >

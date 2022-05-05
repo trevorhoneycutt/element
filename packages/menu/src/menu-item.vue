@@ -5,7 +5,8 @@
     :style="[paddingStyle, itemStyle, { backgroundColor }]"
     :class="{
       'is-active': active,
-      'is-disabled': disabled
+      'is-disabled': disabled,
+      'is-hidden': isHidden
     }"
     @click="handleClick"
     @mouseenter="onMouseEnter"
@@ -82,6 +83,14 @@
       },
       isNested() {
         return this.parentMenu !== this.rootMenu;
+      },
+      isHidden() {
+        console.log(this.$el);
+        if (this.parentMenu.$el && this.parentMenu.$el.classList.contains('is-opened')) {
+          console.log('hey gorl');
+          return false;
+        }
+        return true;
       }
     },
     methods: {

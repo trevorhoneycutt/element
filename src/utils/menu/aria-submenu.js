@@ -14,11 +14,22 @@ SubMenu.prototype.init = function() {
 };
 
 SubMenu.prototype.gotoSubIndex = function(idx) {
+  if (this.subMenuItems[idx - 1]) {
+    let subLength = this.subMenuItems[idx - 1].parentElement.children.length;
+    if (this.subMenuItems[idx - 1] === this.subMenuItems[idx - 1].parentElement.children[subLength - 1]) {
+      // eslint-disable-next-line
+      // debugger;
+      // close submenu?
+    }
+  }
   if (idx === this.subMenuItems.length) {
     idx = 0;
   } else if (idx < 0) {
     idx = this.subMenuItems.length - 1;
   }
+  // else if (this.subMenuItems[idx].classList.contains('is-hidden')) {
+
+  // }
   this.subMenuItems[idx].focus();
   this.subIndex = idx;
   if (this.subMenuItems[idx].classList.contains('el-submenu')) {
