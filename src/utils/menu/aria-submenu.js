@@ -17,9 +17,10 @@ SubMenu.prototype.gotoSubIndex = function(idx) {
   // Calculate if going up or down in menu
   var isDown = this.subIndex < idx;
   // Grab focusable menu items that are not hidden
-  let test = this.domNode.querySelectorAll('[class^="el-menu--"]:not([style*="display: none"]) > .el-menu > li');
+  let focusable = this.domNode.querySelectorAll('[class^="el-menu--"]:not([style*="display: none"]) > .el-menu > li');
+  let focusableItems = [].slice.call(focusable);
   // If current idx is not focusable, skip it
-  while (!Array.from(test).includes(this.subMenuItems[idx]) && ((isDown && idx < this.subMenuItems.length) || (!isDown && idx >= 0))) {
+  while (!focusableItems.includes(this.subMenuItems[idx]) && ((isDown && idx < this.subMenuItems.length) || (!isDown && idx >= 0))) {
     if (isDown) {
       idx++;
     } else {
