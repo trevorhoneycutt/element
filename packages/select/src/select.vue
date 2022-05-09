@@ -140,8 +140,9 @@
         <slot name="prefix"></slot>
       </template>
       <template slot="suffix">
-        <i v-show="!showClose" :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"></i>
-        <i v-if="showClose" class="el-select__caret el-input__icon el-icon-circle-close" @click="handleClearClick"></i>
+        <slot name="suffix" v-if="$slots.suffix"></slot>
+        <i v-show="!showClose && !$slots.suffix" :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"></i>
+        <i v-if="showClose && !$slots.suffix" class="el-select__caret el-input__icon el-icon-circle-close" @click="handleClearClick"></i>
       </template>
     </el-input>
     <transition
@@ -494,8 +495,11 @@
           this.valueOnMenuOpen = this.value;
         } else {
           this.emitChange(this.value);
-        }
 
+          if (this.multiple) {
+            this.resetInputHeight();
+          }
+        }
       },
 
       options() {
