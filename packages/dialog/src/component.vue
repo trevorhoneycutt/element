@@ -15,7 +15,7 @@
         :class="['el-dialog', { 'is-fullscreen': fullscreen, 'el-dialog--center': center }, customClass]"
         ref="dialog"
         :style="style">
-        <div class="el-dialog__header">
+        <div v-if="showHeader" class="el-dialog__header">
           <slot name="title">
             <span class="el-dialog__title">{{ title }}</span>
           </slot>
@@ -79,6 +79,11 @@
       },
 
       closeOnPressEscape: {
+        type: Boolean,
+        default: true
+      },
+
+      showHeader: {
         type: Boolean,
         default: true
       },
