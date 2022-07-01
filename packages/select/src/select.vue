@@ -514,7 +514,7 @@
         if ([].indexOf.call(inputs, document.activeElement) === -1) {
           this.setSelected();
         }
-        if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount) {
+        if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount && this.textLength > 0) {
           this.checkDefaultFirstOption();
         }
       },
