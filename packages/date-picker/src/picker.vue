@@ -953,7 +953,6 @@ export default {
       if (!this.picker) {
         this.mountPicker();
       }
-
       if (this.picker.isValidValue) {
         return value && this.picker.isValidValue(value);
       } else {
