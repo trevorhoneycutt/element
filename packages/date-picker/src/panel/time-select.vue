@@ -147,7 +147,9 @@
       },
 
       isValidValue(date) {
-        return this.items.filter(item => !item.disabled).map(item => item.value).indexOf(date) !== -1;
+        var isValidTime = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(value);
+
+        return this.items.filter(item => !item.disabled).map(item => item.value).indexOf(date) !== -1 || isValidTime;
       },
 
       handleKeydown(event) {
