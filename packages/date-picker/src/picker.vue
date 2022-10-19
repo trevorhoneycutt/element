@@ -953,8 +953,11 @@ export default {
       if (!this.picker) {
         this.mountPicker();
       }
-      if (this.picker.isValidValue) {
-        return value && this.picker.isValidValue(value);
+
+      var isValidValue = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(value);
+
+      if (this.picker.isValidValue || isValidValue) {
+        return value && (this.picker.isValidValue(value) || isValidValue);
       } else {
         return true;
       }
