@@ -138,7 +138,8 @@
         hovering: false,
         focused: false,
         isComposing: false,
-        passwordVisible: false
+        passwordVisible: false,
+        ignoreBlur: false
       };
     },
 
@@ -189,11 +190,7 @@
         type: Boolean,
         default: false
       },
-      tabindex: String,
-      disableBlurEvent: {
-        type: Boolean,
-        default: false
-      }
+      tabindex: String
     },
     computed: {
       _elFormItemSize() {
@@ -305,10 +302,14 @@
           }
         };
       },
+      ignoreNextBlur(state) {
+        this.ignoreBlur = state;
+      },
       handleBlur(event) {
-        if (this.disableBlurEvent) {
+        if (this.ignoreBlur) {
+          this.ignoreBlur = false;
           event.preventDefault();
-          this.$refs.input.focus();
+          return;
         }
         this.focused = false;
         this.$emit('blur', event);

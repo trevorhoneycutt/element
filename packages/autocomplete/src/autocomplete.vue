@@ -10,7 +10,6 @@
     <el-input
       ref="input"
       v-bind="[$props, $attrs]"
-      :disable-blur-event="disableInputBlur"
       @input="handleInput"
       @change="handleChange"
       @focus="handleFocus"
@@ -148,8 +147,7 @@
         suggestions: [],
         loading: false,
         highlightedIndex: -1,
-        suggestionDisabled: false,
-        disableInputBlur: false
+        suggestionDisabled: false
       };
     },
     computed: {
@@ -199,6 +197,7 @@
       },
       handleInput(value) {
         this.$emit('input', value);
+        this.$refs.input.ignoreNextBlur(true);
         this.suggestionDisabled = false;
         if (!this.triggerOnFocus && !value) {
           this.suggestionDisabled = true;
@@ -228,6 +227,7 @@
         this.activated = false;
       },
       handleKeyEnter(e) {
+        this.$refs.input.ignoreNextBlur(false);
         if (this.suggestionVisible && this.highlightedIndex >= 0 && this.highlightedIndex < this.suggestions.length) {
           e.preventDefault();
           this.select(this.suggestions[this.highlightedIndex]);
@@ -240,7 +240,6 @@
         }
       },
       select(item) {
-        this.disableInputBlur = true;
         if (this.fillOnSelected) {
           this.$emit('input', item[this.valueKey]);
         }
@@ -248,7 +247,6 @@
         this.$nextTick(_ => {
           this.suggestions = [];
           this.highlightedIndex = -1;
-          this.disableInputBlur = false;
         });
       },
       highlight(index) {
