@@ -140,10 +140,6 @@
       blurOnSelect: {
         type: Boolean,
         default: false
-      },
-      clearOnSelect: {
-        type: Boolean,
-        default: false
       }
     },
     data() {
@@ -247,9 +243,6 @@
         this.disableInputBlur = true;
         if (this.fillOnSelected) {
           this.$emit('input', item[this.valueKey]);
-        }
-        if (this.clearOnSelected) {
-          this.$emit('input', '');
         }
         this.$emit('select', item);
         this.$nextTick(_ => {
