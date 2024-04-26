@@ -10,6 +10,7 @@
     <el-input
       ref="input"
       v-bind="[$props, $attrs]"
+      :disable-blur-event="disableInputBlur"
       @input="handleInput"
       @change="handleChange"
       @focus="handleFocus"
@@ -131,6 +132,18 @@
       highlightFirstItem: {
         type: Boolean,
         default: false
+      },
+      fillOnSelect: {
+        type: Boolean,
+        default: true
+      },
+      blurOnSelect: {
+        type: Boolean,
+        default: false
+      },
+      clearOnSelect: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -139,7 +152,8 @@
         suggestions: [],
         loading: false,
         highlightedIndex: -1,
-        suggestionDisabled: false
+        suggestionDisabled: false,
+        disableInputBlur: false
       };
     },
     computed: {
@@ -230,11 +244,18 @@
         }
       },
       select(item) {
-        this.$emit('input', item[this.valueKey]);
+        this.disableInputBlur = true;
+        if (this.fillOnSelected) {
+          this.$emit('input', item[this.valueKey]);
+        }
+        if (this.clearOnSelected) {
+          this.$emit('input', '');
+        }
         this.$emit('select', item);
         this.$nextTick(_ => {
           this.suggestions = [];
           this.highlightedIndex = -1;
+          this.disableInputBlur = false;
         });
       },
       highlight(index) {
