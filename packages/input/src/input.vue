@@ -309,7 +309,7 @@
       handleBlur(event) {
         if (this.ignoreBlur) {
           this.ignoreBlur = false;
-          event.preventDefault();
+          this.$refs.input.focus();
           return;
         }
         this.focused = false;
