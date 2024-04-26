@@ -192,6 +192,7 @@
       },
       tabindex: String
     },
+    
     computed: {
       _elFormItemSize() {
         return (this.elFormItem || {}).elFormItemSize;
