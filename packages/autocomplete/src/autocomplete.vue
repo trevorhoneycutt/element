@@ -197,7 +197,7 @@
       },
       handleInput(value) {
         this.$emit('input', value);
-        this.$refs.input.ignoreNextBlur(true);
+        if (this.blurOnSelect) { this.$refs.input.ignoreNextBlur(true); }
         this.suggestionDisabled = false;
         if (!this.triggerOnFocus && !value) {
           this.suggestionDisabled = true;
@@ -227,7 +227,7 @@
         this.activated = false;
       },
       handleKeyEnter(e) {
-        this.$refs.input.ignoreNextBlur(false);
+        if (this.blurOnSelect) { this.$refs.input.ignoreNextBlur(false); }
         if (this.suggestionVisible && this.highlightedIndex >= 0 && this.highlightedIndex < this.suggestions.length) {
           e.preventDefault();
           this.select(this.suggestions[this.highlightedIndex]);
@@ -240,7 +240,7 @@
         }
       },
       select(item) {
-        if (this.fillOnSelected) {
+        if (this.fillOnSelect) {
           this.$emit('input', item[this.valueKey]);
         }
         this.$emit('select', item);
