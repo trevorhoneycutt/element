@@ -19,6 +19,7 @@
       @keydown.down.native.prevent="highlight(highlightedIndex + 1)"
       @keydown.enter.native="handleKeyEnter"
       @keydown.native.tab="close"
+      @keydown.tab="close"
     >
       <template slot="prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
@@ -138,7 +139,7 @@
       },
       blurOnSelect: {
         type: Boolean,
-        default: false
+        default: true
       }
     },
     data() {
@@ -147,7 +148,8 @@
         suggestions: [],
         loading: false,
         highlightedIndex: -1,
-        suggestionDisabled: false
+        suggestionDisabled: false,
+        selected: false
       };
     },
     computed: {
@@ -197,7 +199,8 @@
       },
       handleInput(value) {
         this.$emit('input', value);
-        if (this.blurOnSelect) { this.$refs.input.ignoreNextBlur(true); }
+        this.selected = false;
+        if (!this.blurOnSelect) { this.$refs.input.ignoreNextBlur(true); }
         this.suggestionDisabled = false;
         if (!this.triggerOnFocus && !value) {
           this.suggestionDisabled = true;
@@ -225,6 +228,10 @@
       },
       close(e) {
         this.activated = false;
+        if (!this.selected) {
+          this.selected = true;
+          this.$refs.input.blur();
+        }
       },
       handleKeyEnter(e) {
         if (this.blurOnSelect) { this.$refs.input.ignoreNextBlur(false); }
@@ -240,9 +247,8 @@
         }
       },
       select(item) {
-        if (this.fillOnSelect) {
-          this.$emit('input', item[this.valueKey]);
-        }
+        this.selected = true;
+        if (this.fillOnSelect) { this.$emit('input', item[this.valueKey]); }
         this.$emit('select', item);
         this.$nextTick(_ => {
           this.suggestions = [];
