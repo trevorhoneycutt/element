@@ -148,7 +148,7 @@
         loading: false,
         highlightedIndex: -1,
         suggestionDisabled: false,
-        selected: false
+        handledSelection: false
       };
     },
     computed: {
@@ -198,7 +198,7 @@
       },
       handleInput(value) {
         this.$emit('input', value);
-        this.selected = false;
+        this.handledSelection = false;
         if (!this.blurOnSelect) { this.$refs.input.ignoreNextBlur(true); }
         this.suggestionDisabled = false;
         if (!this.triggerOnFocus && !value) {
@@ -219,7 +219,6 @@
         }
       },
       handleBlur(event) {
-        this.activated = false;
         this.$emit('blur', event);
       },
       handleClear() {
@@ -228,8 +227,8 @@
       },
       close(e) {
         this.activated = false;
-        if (!this.selected && !this.blurOnSelect) {
-          this.selected = true;
+        if (!this.handledSelection && !this.blurOnSelect) {
+          this.handledSelection = true;
           this.$refs.input.blur();
         }
       },
@@ -247,7 +246,7 @@
         }
       },
       select(item) {
-        this.selected = true;
+        this.handledSelection = true;
         if (this.fillOnSelect) { this.$emit('input', item[this.valueKey]); }
         this.$emit('select', item);
         this.$nextTick(_ => {
