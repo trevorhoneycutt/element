@@ -19,7 +19,6 @@
       @keydown.down.native.prevent="highlight(highlightedIndex + 1)"
       @keydown.enter.native="handleKeyEnter"
       @keydown.native.tab="close"
-      @keydown.tab="close"
     >
       <template slot="prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
@@ -220,6 +219,7 @@
         }
       },
       handleBlur(event) {
+        this.activated = false;
         this.$emit('blur', event);
       },
       handleClear() {
