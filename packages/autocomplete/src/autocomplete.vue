@@ -228,13 +228,13 @@
       },
       close(e) {
         this.activated = false;
-        if (!this.selected) {
+        if (!this.selected && !this.blurOnSelect) {
           this.selected = true;
           this.$refs.input.blur();
         }
       },
       handleKeyEnter(e) {
-        if (this.blurOnSelect) { this.$refs.input.ignoreNextBlur(false); }
+        if (!this.blurOnSelect) { this.$refs.input.ignoreNextBlur(false); }
         if (this.suggestionVisible && this.highlightedIndex >= 0 && this.highlightedIndex < this.suggestions.length) {
           e.preventDefault();
           this.select(this.suggestions[this.highlightedIndex]);
