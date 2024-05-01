@@ -18,7 +18,7 @@
       @keydown.up.native.prevent="highlight(highlightedIndex - 1)"
       @keydown.down.native.prevent="highlight(highlightedIndex + 1)"
       @keydown.enter.native="handleKeyEnter"
-      @keydown.native.tab="handleKeyEnter"
+      @keydown.native.tab="handleKeyTab"
     >
       <template slot="prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
@@ -139,6 +139,10 @@
       blurOnSelect: {
         type: Boolean,
         default: true
+      },
+      tabSelectsSuggestion: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -199,8 +203,8 @@
       handleInput(value) {
         this.$emit('input', value);
         this.handledSelection = false;
-        if (!this.blurOnSelect) { this.$refs.input.ignoreNextBlur(true); }
         this.suggestionDisabled = false;
+        if (!this.blurOnSelect) { this.$refs.input.ignoreNextBlur(true); }
         if (!this.triggerOnFocus && !value) {
           this.suggestionDisabled = true;
           this.suggestions = [];
@@ -228,8 +232,15 @@
       close(e) {
         this.activated = false;
         if (!this.handledSelection && !this.blurOnSelect) {
-          this.handledSelection = true;
           this.$refs.input.blur();
+        }
+      },
+      handleKeyTab(e) {
+        if (this.tabSelectsSuggestion) {
+          this.select(this.suggestions[this.highlightedIndex]);
+        } else {
+          if (!this.blurOnSelect) { this.$refs.input.ignoreNextBlur(false); }
+          this.close(e);
         }
       },
       handleKeyEnter(e) {
