@@ -237,7 +237,7 @@
       },
       handleKeyTab(e) {
         if (this.tabSelectsSuggestion) {
-          this.select(this.suggestions[this.highlightedIndex]);
+          this.handleKeyEnter(e);
         } else {
           if (!this.blurOnSelect) { this.$refs.input.ignoreNextBlur(false); }
           this.close(e);
