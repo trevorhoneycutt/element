@@ -236,8 +236,8 @@
         }
       },
       handleKeyTab(e) {
-        if (this.tabSelectsSuggestion) {
-          this.handleKeyEnter(e);
+        if (this.tabSelectsSuggestion && this.highlightedIndex >= 0 && this.highlightedIndex < this.suggestions.length) {
+          this.select(this.suggestions[this.highlightedIndex]);
         } else {
           if (!this.blurOnSelect) { this.$refs.input.ignoreNextBlur(false); }
           this.close(e);
